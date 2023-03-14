@@ -1,0 +1,649 @@
+/*-----------------------------------------
+
+    The Center for Education Through Exploration
+    Arizona State University           
+
+-----------------------------------------*/
+/*-----------------------------------------
+    Variables            
+-----------------------------------------*/
+:root{
+    --pixel-s: 2px;
+    --pixel-m: 4px;
+    --pixel-l: 8px;
+
+    --star-border-on: #ba8300;
+    --star-fill-on: #ffe15c;    
+    --star-border-off: var(--white80_a);
+    --star-fill-off: var(--black20_a);
+    --star-icon:  
+        6px 0px var(--star-border-on), 
+        5px 1px var(--star-border-on), 6px 1px var(--star-fill-on), 7px 1px var(--star-border-on), 
+        4px 2px var(--star-border-on), 5px 2px var(--star-fill-on), 6px 2px var(--star-fill-on), 7px 2px var(--star-fill-on), 8px 2px var(--star-border-on), 
+        4px 3px var(--star-border-on), 5px 3px var(--star-fill-on), 6px 3px var(--star-fill-on), 7px 3px var(--star-fill-on), 8px 3px var(--star-border-on), 
+        1px 4px var(--star-border-on), 2px 4px var(--star-border-on), 3px 4px var(--star-border-on), 4px 4px var(--star-fill-on), 5px 4px var(--star-fill-on), 6px 4px var(--star-fill-on), 7px 4px var(--star-fill-on), 8px 4px var(--star-fill-on), 9px 4px var(--star-border-on), 10px 4px var(--star-border-on), 11px 4px var(--star-border-on), 
+        0px 5px var(--star-border-on), 1px 5px var(--star-fill-on), 2px 5px var(--star-fill-on), 3px 5px var(--star-fill-on), 4px 5px var(--star-fill-on), 5px 5px var(--star-fill-on), 6px 5px var(--star-fill-on), 7px 5px var(--star-fill-on), 8px 5px var(--star-fill-on), 9px 5px var(--star-fill-on), 10px 5px var(--star-fill-on), 11px 5px var(--star-fill-on), 12px 5px var(--star-border-on), 
+        1px 6px var(--star-border-on), 2px 6px var(--star-fill-on), 3px 6px var(--star-fill-on), 4px 6px var(--star-fill-on), 5px 6px var(--star-fill-on), 6px 6px var(--star-fill-on), 7px 6px var(--star-fill-on), 8px 6px var(--star-fill-on), 9px 6px var(--star-fill-on), 10px 6px var(--star-fill-on), 11px 6px var(--star-border-on), 
+        2px 7px var(--star-border-on), 3px 7px var(--star-fill-on), 4px 7px var(--star-fill-on), 5px 7px var(--star-fill-on), 6px 7px var(--star-fill-on), 7px 7px var(--star-fill-on), 8px 7px var(--star-fill-on), 9px 7px var(--star-fill-on), 10px 7px var(--star-border-on), 
+        2px 8px var(--star-border-on), 3px 8px var(--star-fill-on), 4px 8px var(--star-fill-on), 5px 8px var(--star-fill-on), 6px 8px var(--star-border-on), 7px 8px var(--star-fill-on), 8px 8px var(--star-fill-on), 9px 8px var(--star-fill-on), 10px 8px var(--star-border-on), 
+        1px 9px var(--star-border-on), 2px 9px var(--star-fill-on), 3px 9px var(--star-fill-on), 4px 9px var(--star-fill-on), 5px 9px var(--star-border-on), 7px 9px var(--star-border-on), 8px 9px var(--star-fill-on), 9px 9px var(--star-fill-on), 10px 9px var(--star-fill-on), 11px 9px var(--star-border-on), 
+        1px 10px var(--star-border-on), 2px 10px var(--star-fill-on), 3px 10px var(--star-fill-on), 4px 10px var(--star-border-on), 8px 10px var(--star-border-on), 9px 10px var(--star-fill-on), 10px 10px var(--star-fill-on), 11px 10px var(--star-border-on), 
+        2px 11px var(--star-border-on), 3px 11px var(--star-border-on), 9px 11px var(--star-border-on), 10px 11px var(--star-border-on);
+
+
+    --arrow-weight: 10px;
+    --arrow-length: calc(100% * 1/8 );
+    --arrowhead:15px;   
+    --north: translateX(-50%) translateY(-100%);
+    --northeast: translateX(-50%) translateY(-100%);
+    --east: translateX(0%) translateY(-50%);  
+    --southeast: translateX(-50%) translateY(-100%);
+    --south: translateX(-50%) translateY(0%) rotate(180deg);  
+    --southwest: translateX(-50%) translateY(-100%)  rotate(-45deg);
+    --west:  translateX(-100%) translateY(-50%) rotate(180deg);  
+    --northwest: translateX(-50%) translateY(-100%);
+    --angle: 4.5;
+
+    --angle-top-right: polygon(        
+        calc(-1*var(--pixel-m)) 0,
+        calc(100% + var(--pixel-m)) calc(0% + (var(--pixel-m) * var(--angle))),
+        calc(100% + var(--pixel-m)) 100%,
+        calc(-1*var(--pixel-m)) 100%
+    );
+    --angle-top-left: polygon(        
+        calc(-1*var(--pixel-m)) calc(0% + (var(--pixel-m) * var(--angle))),
+        calc(100% + var(--pixel-m)) 0,
+        calc(100% + var(--pixel-m)) 100%,
+        calc(-1*var(--pixel-m)) 100%
+    );
+    --angle-bottom-right: polygon(        
+        calc(-1*var(--pixel-m)) 0,
+        calc(100% + var(--pixel-m)) 0,
+        calc(100% + var(--pixel-m)) calc(100% - (var(--pixel-m) * var(--angle))),
+        calc(-1*var(--pixel-m)) 100%
+    );
+    --angle-bottom-left: polygon(        
+        calc(-1*var(--pixel-m)) 0,
+        calc(100% + var(--pixel-m)) 0,
+        calc(100% + var(--pixel-m)) 100%,
+        calc(-1*var(--pixel-m)) calc(100% - (var(--pixel-m) * var(--angle)))
+    );
+    --angle-top-left-top-right: polygon( 
+        calc(var(--pixel-m) * var(--angle)) calc(var(--pixel-m) * -1), 
+        calc(100% - (var(--pixel-m) * var(--angle))) calc(var(--pixel-m) * -1), 
+        100% calc(100% + var(--pixel-m)), 
+        0 calc(100% + var(--pixel-m)) 
+    );
+    
+    --angle-bottom-left-bottom-right: polygon( 
+        0 calc(-1*var(--pixel-m)), 
+        100%  calc(-1*var(--pixel-m)), 
+        calc(100% - (var(--pixel-m) * var(--angle))) calc(100% + var(--pixel-m)), 
+        calc(0% + (var(--pixel-m) * var(--angle))) calc(100% + var(--pixel-m)) 
+    );
+
+    --p-0:calc(100% * 0/8);
+    --p-1:calc(100% * 1/8);
+    --p-2:calc(100% * 2/8);
+    --p-3:calc(100% * 3/8);
+    --p-4:calc(100% * 4/8);
+    --p-5:calc(100% * 5/8);
+    --p-6:calc(100% * 6/8);
+    --p-7:calc(100% * 7/8);
+    --p-8:calc(100% * 8/8); 
+    --p-color:#c6eff5;
+
+    --background-air:url(https://www.dropbox.com/s/5sf3v1y30z66x35/nc-map-air.gif?raw=1);
+    --background-sea:url(https://www.dropbox.com/s/erlnioyo3u85m4k/nc-map-sea.gif?raw=1);
+    --background-land:url(https://www.dropbox.com/s/wrxae2dp5jy68am/nc-map-land.gif?raw=1);
+    --warp1:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="warping"><feColorMatrix type="matrix" values="" in="colormatrix1" result="colormatrix2" /><feTurbulence type="turbulence" baseFrequency="0.002 0.008" numOctaves="2" seed="5" stitchTiles="noStitch" result="turbulence"/><feDisplacementMap in="colormatrix2"  scale="10" xChannelSelector="R" yChannelSelector="A" result="displacementMap" /></filter></svg>#warping');  
+    --warp2:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="warping"><feColorMatrix type="matrix" values="" in="colormatrix1" result="colormatrix2" /><feTurbulence type="turbulence" baseFrequency="0.002 0.008" numOctaves="2" seed="35" stitchTiles="noStitch" result="turbulence"/><feDisplacementMap in="colormatrix2"  scale="10" xChannelSelector="R" yChannelSelector="A" result="displacementMap" /></filter></svg>#warping');  
+    --warp3:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="warping"><feColorMatrix type="matrix" values="" in="colormatrix1" result="colormatrix2" /><feTurbulence type="turbulence" baseFrequency="0.002 0.008" numOctaves="2" seed="55" stitchTiles="noStitch" result="turbulence"/><feDisplacementMap in="colormatrix2"  scale="10" xChannelSelector="R" yChannelSelector="A" result="displacementMap" /></filter></svg>#warping');  
+
+    --tricho:url(https://www.dropbox.com/s/tixgok4tza97z8s/feed-tricho-8bit.gif?raw=1);
+    --sea-turtle:url(https://www.dropbox.com/s/75egc2dhwuxueod/feed-sea-turtle-8bit.gif?raw=1);
+    --pseu:url(https://www.dropbox.com/s/icewxj6bxrhf8aj/feed-pseu-8bit2.gif?raw=1);
+    --pelly:url(https://www.dropbox.com/s/5e4gu7f1tete58u/feed-pelly-8bit.gif?raw=1);
+    --nitros:url(https://www.dropbox.com/s/83y1ws3p4idv43q/feed-nitros-8bit.gif?raw=1);
+    --nitrob:url(https://www.dropbox.com/s/xoc22sathvpthzh/feed-nitrob-8bit.gif?raw=1);
+    --zoe:url(https://www.dropbox.com/s/g1kiek5z2b6m4wn/feed-zoe-8bit3.gif?raw=1);
+    --tricho_happy:url(https://www.dropbox.com/s/p73x47ack9zqtwu/feed-tricho-8bit_happy.gif?raw=1);
+    --sea-turtle_happy:url(https://www.dropbox.com/s/5cs5mgk78rohyz4/feed-sea-turtle-8bit_happy.gif?raw=1);
+    --pseu_happy:url(https://www.dropbox.com/s/i7x49tdup13dd72/feed-pseu-8bit_happy.gif?raw=1);
+    --pelly_happy:url(https://www.dropbox.com/s/v3c56f7s5d76j2o/feed-pelly-8bit_happy.gif?raw=1);
+    --nitros_happy:url(https://www.dropbox.com/s/wglcn2463i71raj/feed-nitros-8bit_happy.gif?raw=1);
+    --nitrob_happy:url(https://www.dropbox.com/s/8hh0pg3r3nezsw6/feed-nitrob-8bit_happy.gif?raw=1);
+    --zoe_happy:url(https://www.dropbox.com/s/r6b846p0p4xbzqh/feed-zoe-8bit_happy.gif?raw=1);
+
+    --flake-size: 1rem;
+    --flake-count: 7;
+}
+
+/*-----------------------------------------
+    Image Preloader      
+-----------------------------------------*/
+body::after{
+    /*-- hide images --*/
+    position:absolute; width:0; height:0; overflow:hidden; z-index:-1; 
+    /*-- load images --*/
+    content:
+        var(--background-air) var(--background-sea) var(--background-land)
+        var(--tricho) (var(--sea-turtle)) var(--pseu) var(--pelly) var(--nitros) var(--nitrob) var(--zoe)
+        var(--tricho_happy) (var(--sea-turtle_happy)) var(--pseu_happy) var(--pelly_happy) var(--nitros_happy) var(--nitrob_happy) var(--zoe_happy);
+}
+
+/*------------------------------
+    General
+------------------------------*/
+
+*{
+    box-sizing:border-box;
+}
+
+/*------------------------------
+    Loading Screen
+------------------------------*/
+#loading-screen{
+    /*layout*/
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index: 10;
+
+    /*appearance*/
+    background-color:var(--grayDark100);
+}
+#loading-screen:before,
+#loading-screen:after{
+    content:"";
+    display: inline-block;
+    position: absolute;
+    top:50%;
+    left:50%;
+}
+#loading-screen:before{
+    /*layout*/
+    width: 3rem;
+    height: 2rem;
+    top: calc(50% - 3.5rem);
+    left: calc(50% - 2rem);
+
+    /*appearance*/
+    background-image:url("../images/infiniscope-infinity-icon_white.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 3rem;
+
+    animation: loading-spinner 1s infinite linear;
+
+}
+#loading-screen:after{
+    /*layout*/
+    transform: translate(-50%, -50%);
+    
+    /*font*/
+    content:"Loading...";
+    color:white;
+    font-family: OpenSans, sans-serif;
+
+}
+
+@keyframes loading-spinner{
+    0%{     rotate: 0deg;}
+    25%{    rotate: 90deg;}
+    50%{    rotate: 180deg;}
+    75%{    rotate: 270deg;}
+    100%{   rotate: 360deg;}
+}
+
+/*------------------------------
+    Layout
+------------------------------*/
+html,
+body, 
+main, 
+#navigation,
+#paths, 
+#organisms,
+#molecules,
+#reactions{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+body{
+    --pattern-size: 100px;
+    --pattern-size-from: 120px;
+    --pattern-size-to: 60px;
+    --pattern-spacing: 40px;
+    --pattern-spacing-from: 10px;
+    --pattern-spacing-to: 60px;
+    --pattern-offset: 50%;
+    --pattern-offset-from: 0%;
+    --pattern-offset-to: 100%;
+    --gradient-rotation: 20%;
+    --pattern-color: rgba(189, 31, 46, .06);
+    background-color: #FEF9CC;
+    background-image: none;
+    box-shadow: inset 0 0 20px #fef9cc;
+}
+main{
+    position: relative;
+    background: repeating-conic-gradient( var(--pattern-color) 0% 25%, transparent 0% 50%) var(--pattern-offset) / var(--pattern-size) var(--pattern-size);
+    animation: patternMove 60s infinite linear !important;
+    width: 100% !important;
+}
+section{
+    position: absolute;
+}
+
+/*------------------------------
+    Navigation
+------------------------------*/
+main input{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    min-width: 120px;
+    margin:0;
+    border-radius: 0px;
+}
+main label{
+    /*layout*/
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    min-width: 120px;
+    position: absolute;
+    z-index: 6;
+    transform: translate(-50%, -50%);
+
+    /*container*/
+    background-color: var(--blue80);
+    box-shadow: inset 0 0 0px var(--pixel-m) var(--black60_a);
+    -webkit-mask-image: 
+        conic-gradient(from -90deg at var(--pixel-m) var(--pixel-m), transparent 0.25turn, gold 0), 
+        conic-gradient(from 0deg at calc(100% - var(--pixel-m)) var(--pixel-m), transparent 0.25turn, gold 0), 
+        conic-gradient(from 180deg at var(--pixel-m) calc(100% - var(--pixel-m)), transparent 0.25turn, gold 0), 
+        conic-gradient(from 90deg at calc(100% - var(--pixel-m)) calc(100% - var(--pixel-m)), transparent 0.25turn, gold 0);
+    -webkit-mask-position: 0 0, 100% 0, 0 100%, 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 51% 51%;
+    overflow: visible;
+
+    /*font*/
+    font-size: 19px;
+    padding: 0 13px;
+    font-family: 'MontserratBold';
+    color: white;
+    text-shadow: 0 0 3px black;  
+}
+main input:not(:checked) + label:hover{
+    background-color: var(--blue100);
+}
+main input:checked + label{
+    background-color: var(--orange100);
+    cursor:default;
+}
+
+main label:not([for]){
+    cursor: default;
+}
+
+/*------------------------------
+    Paths
+------------------------------*/
+/*-- paths container --*/
+#paths{
+    
+}
+
+/*-- path lines --*/
+#paths i,
+#molecules i{
+    position: absolute;
+    z-index: 2;
+    height: var(--arrow-length);
+    width: var(--arrow-weight);
+    background: var(--p-color);
+    box-shadow: var(--pixel-m) 0 0px 0 var(--grayDark60_a), calc(-1 * var(--pixel-m)) 0 0px 0 var(--grayDark60_a);
+    transform:translate(-3px, -3px) scaleY(.97);
+}
+#molecules i{
+    z-index: 0;
+}
+/*-- path arrowheads --*/
+#paths i:before,
+#molecules i:before{
+    content: "";
+    display: none;
+    width: var(--pixel-m);
+    height: calc(var(--pixel-m) * 2);
+    position: relative;
+    filter: drop-shadow(0px 5px 0px var(--grayDark60_a)) drop-shadow(0px -4px 0px var(--grayDark60_a)) drop-shadow(-4px 0px 0px var(--grayDark20_a));
+    background-color: var(--p-color);
+    box-shadow: 
+        calc(-1 * var(--pixel-m)) var(--pixel-m) var(--p-color), 
+        calc(-1 * var(--pixel-m)) calc(-1 * var(--pixel-m)) var(--p-color), 
+        calc(-2 * var(--pixel-m)) calc(-2 * var(--pixel-m)) var(--p-color), 
+        calc(-2 * var(--pixel-m)) calc(-1 * var(--pixel-m)) var(--p-color), 
+        calc(-2 * var(--pixel-m)) calc(1 * var(--pixel-m)) var(--p-color), 
+        calc(-2 * var(--pixel-m)) calc(2 * var(--pixel-m)) var(--p-color), 
+        calc(-3 * var(--pixel-m)) calc(-3 * var(--pixel-m)) var(--p-color), 
+        calc(-3 * var(--pixel-m)) calc(-1 * var(--pixel-m)) var(--p-color), 
+        calc(-3 * var(--pixel-m)) calc(1 * var(--pixel-m)) var(--p-color), 
+        calc(-3 * var(--pixel-m)) calc(3 * var(--pixel-m)) var(--p-color);
+}
+
+/*------------------------------
+    Organisms
+------------------------------*/
+/*-- organisms container --*/
+#organisms{
+    z-index: 2;
+    
+}
+
+/*-- organism container --*/
+#organisms figure{
+    /*layout*/
+    margin:0;
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, 12%);
+
+    /*appearance*/
+    filter:  drop-shadow(4px 4px 0 #00000033) 
+    
+}
+
+/*-- organism image --*/
+#organisms figure img{
+    /*layout*/
+    width:70px;
+    height:70px;
+    margin:0 0 10px 0;
+
+    /*appearance*/
+    image-rendering: pixelated;
+    filter: grayscale(30%);
+    border:0;
+    outline: 0;
+    box-shadow: none;
+
+    /*image style*/
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;    
+}
+
+#tricho img{ background-image:var(--tricho); }
+#pelly img{ background-image:var(--pelly); }
+#pseu img{ background-image:var(--pseu); }
+#sea-turtle img{ background-image:var(--sea-turtle); }
+#nitros img{ background-image:var(--nitros); }
+#nitrob img{ background-image:var(--nitrob); }
+#zoe img{ background-image:var(--zoe); }
+
+/*-- organism label --*/
+#organisms figure figcaption{
+    /*layout*/
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+
+    /*appearance*/
+    background-color: var(--p-color);
+    box-shadow: none;
+    border-radius: 0px;
+    -webkit-mask-image: conic-gradient(from -90deg at var(--pixel-m) var(--pixel-m), transparent 0.25turn, gold 0), conic-gradient(from 0deg at calc(100% - var(--pixel-m)) var(--pixel-m), transparent 0.25turn, gold 0), conic-gradient(from 180deg at var(--pixel-m) calc(100% - var(--pixel-m)), transparent 0.25turn, gold 0), conic-gradient(from 90deg at calc(100% - var(--pixel-m)) calc(100% - var(--pixel-m)), transparent 0.25turn, gold 0);
+    -webkit-mask-position: 0 0, 100% 0, 0 100%, 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 51% 51%;
+    padding:10px;
+
+    /*font*/
+    text-align: center;
+    font-size: 1.125rem;
+    font-family: OpenSans;
+    font-weight: bold;
+}
+
+/*------------------------------
+    Food Fall
+------------------------------*/
+/*-- food fall container --*/
+#food-fall{
+    /*layout*/
+    display: none;
+    width:100%;
+    height: var(--p-3);
+    top: var(--p-1);
+    z-index:5;
+}
+input:checked ~ #food-fall{
+    display: block;
+}
+/*-- food fall inner elements --*/
+#food-fall * { 
+    position: absolute;
+}
+
+/*-- food fall inner container --*/
+#food-fall div{
+    left:var(--p-2);
+    width:var(--p-4);
+    height:100%;
+    overflow: hidden;
+}
+
+/*-- food fall particles --*/
+#food-fall div i{
+    /*layout*/
+    width: var(--flake-size) !important;
+    height: var(--flake-size);
+    top: calc(var(--flake-size) * -3);
+    padding: 0;
+
+    /*appearance*/
+    background-color: white;
+    border-radius: 0%;
+    box-shadow: 0 0 0 1px var(--orange20dark);
+    user-select: none;
+    cursor: default;
+
+    /*font*/
+    font-size: var(--flake-size);
+    font-family: Arial;
+    text-align: center;  
+}
+
+#food-fall div i:nth-of-type(1){  left:calc(0.5 / var(--flake-count) * 100%); animation-delay:0.00s !important}
+#food-fall div i:nth-of-type(2){  left:calc(1.5 / var(--flake-count) * 100%); animation-delay:0.50s !important}
+#food-fall div i:nth-of-type(3){  left:calc(2.5 / var(--flake-count) * 100%); animation-delay:1.00s !important}
+#food-fall div i:nth-of-type(4){  left:calc(3.5 / var(--flake-count) * 100%); animation-delay:1.50s !important}
+#food-fall div i:nth-of-type(5){  left:calc(4.5 / var(--flake-count) * 100%); animation-delay:0.25s !important} 
+#food-fall div i:nth-of-type(6){  left:calc(5.5 / var(--flake-count) * 100%); animation-delay:1.25s !important}
+#food-fall div i:nth-of-type(7){  left:calc(6.5 / var(--flake-count) * 100%); animation-delay:0.75s !important}
+
+
+input:checked ~ #food-fall div i{    
+    animation-name:             snowflakes-fall,  snowflakes-shake-rotate !important;
+    animation-duration:         1.75s,            0.66s !important;
+    animation-timing-function:  linear,           linear !important;
+    animation-iteration-count:  1,                infinite !important;
+    animation-play-state:       running,          running !important;
+}
+
+/*-- from water --*/
+input#water_btn:checked ~ #food-fall div i{
+    animation-name: snowflakes-fall-left,  snowflakes-shake-rotate !important;
+  }
+  
+/*-- from food --*/  
+input#food_btn:checked ~ #food-fall div i{
+animation-name: snowflakes-fall-right,  snowflakes-shake-rotate !important;
+}
+
+/*------------------------------
+    Earned Reactions
+------------------------------*/
+#reactions{
+    position: fixed;
+    overflow:hidden;
+}
+#reactions > div{
+    /*layout*/
+    position: absolute;
+    
+    min-height: 168px;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0%);
+    padding: 3rem 20px 20px 20px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+
+    /*appearance*/
+    background: repeating-conic-gradient( #00000022 0% 25%, transparent 0% 50%) 0px / 10px 10px, #00000066;
+    box-shadow: inset 0 var(--pixel-m) 0 var(--pixel-m) var(--black60_a);
+    -webkit-mask-image: conic-gradient(from -90deg at var(--pixel-m) var(--pixel-m), transparent 0.25turn, gold 0), conic-gradient(from 0deg at calc(100% - var(--pixel-m)) var(--pixel-m), transparent 0.25turn, gold 0), conic-gradient(from 180deg at var(--pixel-m) calc(100% - var(--pixel-m)), transparent 0.25turn, gold 0), conic-gradient(from 90deg at calc(100% - var(--pixel-m)) calc(100% - var(--pixel-m)), transparent 0.25turn, gold 0);
+    -webkit-mask-position: 0 0, 100% 0, 0 100%, 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 51% 51%;
+
+}
+#reactions > div:before {
+    /*layout*/
+    position: absolute;
+    height: 2rem;
+    width: 133%;
+    padding: 5px;
+    box-sizing: border-box;
+    left: -16.5%;
+    top: 0;
+    transform: scaleX(.75);
+    padding-top: 12px;
+    padding-left: 25px;
+
+    /*appearance*/
+    background-color: var(--black80_a);
+
+    /*font*/
+    content: "You've earned";
+    color: white;
+    font-family: "PressStart2P";
+    font-size: .75rem;
+    text-shadow: 0px 2px 0px var(--black80_a);
+}
+
+#reactions article:last-of-type {
+    margin: 0 0 0 5px;
+}
+#reactions article:first-of-type {
+    margin: 0 5px 0 0;
+}
+#reactions article:only-of-type{
+    margin: 0;
+
+}
+#reactions article {
+    /*layout*/
+    padding: 10px;
+    width: 200px;
+    margin: 0 5px;
+
+    /*appearance*/
+    background-color: var(--p-color);
+    box-shadow: inset 0 0 0 var(--pixel-m) var(--black20_a);
+
+    /*font*/
+    font-family: OpenSans;
+    font-size: 18px;
+}
+#reactions article::before {
+    /*layout*/
+    display: block;
+    position: relative;
+    transform: scale(2);
+    width: 1px;
+    height: 1px;
+
+    /*appearance*/
+    filter: drop-shadow(1px 1px 0px var(--black40_a));
+    background-color: initial;
+    border-radius: initial;
+    box-shadow: var(--star-icon);
+
+    /*font*/
+    content:"";   
+}
+
+#reactions article p {
+    /*layout*/
+    position: relative;
+    margin: 0;
+    padding: 0 10px 0 20px;
+
+    /*font*/
+    text-align: center;
+}
+
+#reactions article .name{
+    font-weight:bold;
+}
+#reactions article .species{
+    font-family: OpenSansItalic, OpenSans, sans-serif;
+}
+
+/*------------------------------
+    Animations
+------------------------------*/
+@keyframes patternMove{
+    from{
+      background: 
+      repeating-conic-gradient(
+        var(--pattern-color) 0% 25%, 
+        transparent 0% 50%) 
+        var(--pattern-offset-from) var(--pattern-offset-from)/ var(--pattern-size) var(--pattern-size);
+    }
+    to{
+      background: 
+      repeating-conic-gradient(
+        var(--pattern-color) 0% 25%, 
+        transparent 0% 50%) 
+        var(--pattern-offset-to) var(--pattern-offset-to) / var(--pattern-size) var(--pattern-size);
+    }
+}
+
+@keyframes bouncing{
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0) scaleY(1);}   
+    40% {transform:  translateY(-20%) scaleY(1.08);} 
+    60% {transform: translateY(-10%) scaleY(1.05);} 
+  }
+
+  @keyframes snowflakes-fall-left{
+    0%{top:calc(var(--flake-size) * -3); left:5%;}
+    100%{top: calc(100% + var(--flake-size) );}
+  }
+  @keyframes snowflakes-fall{
+    0%{top:calc(var(--flake-size) * -3); left:50%;}
+    100%{top: calc(100% + var(--flake-size) );}
+  }
+  @keyframes snowflakes-fall-right{
+    0%{top:calc(var(--flake-size) * -3); left:95%;}
+    100%{top: calc(100% + var(--flake-size) );}
+  }
+  @keyframes snowflakes-shake-rotate{
+    0%{transform:   translate(20%, 0)   rotateY(0deg); }
+    50%{transform:  translate(-20%, 0)  rotateY(180deg); background-color:var(--orange100); box-shadow: 0 0 0 4px var(--orange20dark);}
+    100%{transform: translate(20%, 0)   rotateY(360deg); }
+  }

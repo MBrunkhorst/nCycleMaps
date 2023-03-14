@@ -1,0 +1,102 @@
+/*-----------------------------------------
+
+    The Center for Education Through Exploration
+    Arizona State University           
+
+-----------------------------------------*/
+/*-----------------------------------------
+    Import Other Stylesheets      
+-----------------------------------------*/
+@import url("https://etx-nec.s3.us-west-2.amazonaws.com/css/torus/etx/styles/infini-dev/style_flagship-misc.css");
+@import url("https://etx-nec.s3.us-west-2.amazonaws.com/css/torus/etx-resource/styles/color-palette.css");
+@import url("https://etx-nec.s3.us-west-2.amazonaws.com/css/torus/etx-resource/styles/font-families_master.css");
+@import url("../global-style.css");
+
+
+
+/*------------------------------
+    Navigation
+------------------------------*/
+main input, main input + label{
+    top: var(--p-1);
+}
+#water_btn, #water_btn + label{
+    left: var(--p-2);
+}
+#air_btn, #air_btn + label{
+    left: var(--p-4);
+}
+#food_btn, #food_btn + label{
+    left: var(--p-6);
+}
+
+/*------------------------------
+    Paths
+------------------------------*/
+/*-- path lines --*/
+#paths i:nth-of-type(1){
+    top: var(--p-1);
+    left: var(--p-2);
+    clip-path: var(--angle-bottom-right);
+    margin-top:14px;
+}
+#paths i:nth-of-type(2){
+    top: var(--p-1);
+    left: var(--p-4);
+}
+#paths i:nth-of-type(3){
+    top: var(--p-1);
+    left: var(--p-6);
+    clip-path: var(--angle-bottom-left);
+    margin-top:14px;
+}
+#paths i:nth-of-type(4){
+    /*layout*/
+    top: var(--p-2);
+    left: var(--p-2);
+    transform: var(--east) var(--east) scaleX(.99);
+    margin: 5px 0 0 -10px;
+    z-index: 1;
+    height: var(--arrow-weight);
+    width: calc(var(--p-4) + (var(--pixel-m) * 6));
+
+    /*container*/
+    box-shadow: 0 var(--pixel-m) 0px 0 var(--grayDark60_a), 0 calc(-1 * var(--pixel-m)) 0px 0 var(--grayDark60_a) !important;
+    clip-path: polygon(
+        calc(var(--pixel-m) * var(--angle)) calc(var(--pixel-m) * -1), 
+        calc(100% - (var(--pixel-m) * var(--angle))) calc(var(--pixel-m) * -1), 
+        100% calc(100% + var(--pixel-m)), 
+        0% calc(100% + var(--pixel-m))
+    );
+}
+#paths i:nth-of-type(5){
+    top: var(--p-2);
+    left: var(--p-4);
+    transform: var(--south) scaleY(.97);
+    margin: 3px 0 0 2px;
+}
+
+/*-- path arrowheads --*/
+#paths i:nth-of-type(5):before{
+    display: inline-block !important;
+    border-bottom-color: var(--p-color);
+    left: -100%;
+    transform: rotate(-90deg) translate(11px, 13px);
+}
+
+
+/*------------------------------
+    Organisms
+------------------------------*/
+#sea-turtle {
+    top: var(--p-3);
+    left: var(--p-4);
+}
+
+input#food_btn:checked ~ #organisms #sea-turtle img{ background-image: var(--sea-turtle_happy); }
+input#food_btn:checked ~ #organisms #sea-turtle img{
+    transition: background-image 0.25s 2s linear, filter 0.25s 2s linear;
+    filter: drop-shadow(0 5px 0 #00000033) grayscale(0%) brightness(1.1);
+    animation: 1s linear 0s infinite bouncing;
+    animation-delay: 3s;
+}

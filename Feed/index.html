@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nitrogen Cycles - Mini Feeding Screen</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="style.css">
+    <script src="simcapi.js"></script>
+    <!-- <script src="../../scripts/loading-screen.js"></script> -->
+</head>
+
+<body class="p-10">
+<!-- 
+    <picture id="loading-screen"></picture> -->
+   
+    <main>
+         <!-- Navigation -->
+            <input type="radio" id="molecule_btn" name="molecule-type" value="molecule">
+            <label id="moleculeLabel" for="molecule_btn"><span>molecule</span></label>
+
+        <!-- Paths -->
+        <section id="paths">
+            <!-- topmost and horizontal paths -->
+            <i></i>
+            <i></i>
+            
+            <!-- paths TO organisms -->
+            <i></i>
+            <i></i>
+            <i></i>  
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+
+               
+        </section> 
+
+        
+        <!-- Organisms -->
+        <section id="organisms" class="react-tricho react-sea-turtle react-nitrob">
+            <figure id="tricho">
+                <img src="https://etx-nec.s3-us-west-2.amazonaws.com/css/etx-resource/images/transparent-pixel.png">
+                <figcaption><span>Tricho</span></figcaption>
+            </figure>
+            <figure id="pseu">
+                <img src="https://etx-nec.s3-us-west-2.amazonaws.com/css/etx-resource/images/transparent-pixel.png">
+                <figcaption><span>Pseu</span></figcaption>
+            </figure>
+            <figure id="pelly">
+                <img src="https://etx-nec.s3-us-west-2.amazonaws.com/css/etx-resource/images/transparent-pixel.png">
+                <figcaption><span>Pelly</span></figcaption>
+            </figure>
+            <figure id="sea-turtle">
+                <img src="https://etx-nec.s3-us-west-2.amazonaws.com/css/etx-resource/images/transparent-pixel.png">
+                <figcaption><span>Sea Turtle</span></figcaption>
+            </figure>
+            <figure id="nitros">
+                <img src="https://etx-nec.s3-us-west-2.amazonaws.com/css/etx-resource/images/transparent-pixel.png">
+                <figcaption><span>NitroS</span></figcaption>
+            </figure>
+            <figure id="nitrob">
+                <img src="https://etx-nec.s3-us-west-2.amazonaws.com/css/etx-resource/images/transparent-pixel.png">
+                <figcaption><span>NitroB</span></figcaption>
+            </figure>
+            <figure id="zoe">
+                <img src="https://etx-nec.s3-us-west-2.amazonaws.com/css/etx-resource/images/transparent-pixel.png">
+                <figcaption><span>Zoe</span></figcaption>
+            </figure>
+        </section>
+
+        <!-- Sprinkle effect -->
+        <section id="food-fall">
+            <div>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>                      
+        </section>
+
+        <!-- Molecules -->
+        <section id="molecules">
+            <div id="tricho-path">
+                <i></i>
+                <label><span id="tricho-path-span">Tricho</span></label>
+            </div>
+            <div id="pseu-path">
+                <i></i>
+                <label><span id="pseu-path-span">Pseu</span></label>
+            </div>
+            <div id="pelly-path">
+                <i></i>
+                <label><span id="pelly-path-span">Pelly</span></label>
+            </div>
+            <div id="sea-turtle-path">
+                <i></i>
+                <label><span id="sea-turtle-path-span">Turtle</span></label>
+            </div>
+            <div id="nitros-path">
+                <i></i>
+                <label><span id="nitros-path-span">NitroS</span></label>
+            </div>
+            <div id="nitrob-path">
+                <i></i>
+                <label><span id="nitrob-path-span">NitroB</span></label>
+            </div>
+            <div id="zoe-path">
+                <i></i>
+                <label><span id="zoe-path-span">Zoe</span></label>
+            </div>
+        </section>
+
+
+        <!-- Earned Reactions -->
+        <section id="reactions">
+            <div>
+                <article id="card1">
+                    <p id="card1Name" class="name">Pelly</p>
+                    <p id="card1Species" class="species">Pelagibacter</p>
+                    <p class="chem-reaction">
+                        <span id="card1React1">C2H5NO2</span>
+                        <span class="reaction-arrow"></span>
+                        <span id="card1React2">NH4+</span>
+                    </p>
+                </article>
+                <article id="card2">
+                    <p id="card2Name" class="name">Pelly</p>
+                    <p id="card2Species" class="species">Pelagibacter</p>
+                    <p class="chem-reaction">
+                        <span id="card2React1">C2H5NO2</span>
+                        <span class="reaction-arrow"></span>
+                        <span id="card2React2">NH4+</span>
+                    </p>
+                </article>
+                <article id="card3">
+                    <p id="card3Name" class="name">Pelly</p>
+                    <p id="card3Species" class="species">Pelagibacter</p>
+                    <p class="chem-reaction">
+                        <span>C2H5NO2</span>
+                        <span class="reaction-arrow"></span>
+                        <span>NH4+</span>
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+<!-- <script src="feedBigSetUp.js"></script> -->
+    <script src="feedBig.js"></script>
+    
+   
+</body>
+
+</html>
